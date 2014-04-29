@@ -1,0 +1,9 @@
+Package: FDMoptions
+Title: Finite Difference Option Pricing
+Version: 0.1
+Date: 2014-04-28
+Authors@R: "Arnthor Axelsson <arnthor@nyu.edu> [aut, cre]"
+Description: Uses finite difference numerical approximations to price options. Current version only supports European options.
+Imports: limSolve
+License: GPL (>=2)
+LazyData: true
