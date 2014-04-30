@@ -1,5 +1,5 @@
 FDMeur.price <- function(S.0, K, Rf, sigma, TypeFlag = 'call', t=0, Time=1, 
-                         S.max=2*max(S.0,K), dim.t=10*Time, dim.S=S.max){
+                         S.max=2*K, dim.t=10*Time, dim.S=S.max){
   #' Price a European option at (S.0, t) using FDM
   #' 
   #' Valuates European options at (S.0,t) using finite difference

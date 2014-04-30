@@ -32,7 +32,7 @@ FDMeur.error <- function(S.0, K, Rf, sigma, TypeFlag = 'call', t=0, Time=1,
      # Error handling
      stopifnot(TypeFlag == 'call'|| TypeFlag =='put')
      # Compute variables for Black-Scholes
-     d.1 <- (log(S.0/K)+(Rf+sigma^2/2)*(Time-t))/(sigma*sqrt(Time-t))
+     d.1 <- ((log(S.0/K)+(Rf+sigma^2/2)*(Time-t)))/(sigma*sqrt(Time-t))
      d.2 <- d.1 - sigma*sqrt(Time-t)
      # Get FDM valuation price and Black-Scholes price
      if(TypeFlag == 'call'){

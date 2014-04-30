@@ -24,16 +24,12 @@ FDMeur.ThetaPlot <- function(S.0, K, Rf, sigma, TypeFlag = 'call',
      #'          \code{\link{FDMeur.price}}, \code{\link{FDMeur.error}},
      #'          \code{\link{FDMeur.DeltaPlot}}
      
-     # Choose 'call' or 'put'
-     if(TypeFlag == 'call'){
-       table <- FDMeurCall.table(K, Rf, sigma, Time, S.max)
-     } else{
-       table <- FDMeurPut.table(K, Rf, sigma, Time, S.max)
-     }
-     plot(-diff(table[(S.0+1),], lag=2)/2, type='l', 
+     price <-  FDMeur.price(S.0, K, Rf, sigma, TypeFlag, seq(0,Time,0.1), Time, S.max)
+     print(price)
+     plot(diff(price, lag=1)/.1, type='l', 
           main=paste('EUR ', TypeFlag, ' - theta plot\n', 'S.0 =', S.0, 
                      ', K =',K,', Rf =',Rf,', sigma =',sigma,', T =',Time), 
-          cex.main = 0.9, xlab='t', ylab='c(S,0)', xaxt='n',  
+          cex.main = 0.9, xlab='t', ylab='Theta', xaxt='n',  
           panel.first=abline(h=0, col='gray'))
      axis(side=1, at=c(2,4,6,8,10)*Time, lab=c(.2,.4,.6,.8,1)*Time)
 }

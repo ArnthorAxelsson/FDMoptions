@@ -25,15 +25,15 @@ FDMeur.DeltaPlot <- function(K, Rf, sigma, TypeFlag = 'call',
      #'          \code{\link{FDMeur.price}}, \code{\link{FDMeur.error}},
      #'          \code{\link{FDMeur.ThetaPlot}}
      
-     # Choose 'call' or 'put'
-     if(TypeFlag == 'call'){
-       table <- FDMeurCall.table(K, Rf, sigma, Time, S.max)
-     } else{
-       table <- FDMeurPut.table(K, Rf, sigma, Time, S.max)
-     }
-     plot(table[, (t*10 + 1)], type='l', 
+     price <-  FDMeur.price(0:S.max, K, Rf, sigma, TypeFlag='call')
+     #par(mar=c(5,4,4,4)+.1)
+     #plot(1:(S.max+1), c(0,diff(price, lag=1)),type="l",col="blue",axes=F,xlab="",ylab="")
+     #axis(4)
+     #mtext("Delta",side=4,line=3)
+     #par(new=T)
+     plot(price, type='l', cex.main = 0.9, xlab='S', ylab='Option price', 
           main=paste('EUR ', TypeFlag, ' - delta plot\n',
                      'K =',K,', Rf =',Rf,', sigma =',sigma,', T =',Time), 
-          cex.main = 0.9, xlab='S', ylab='c(S,0)', 
           panel.first=c(abline(v=K, lty=2, col='red'),abline(h=0, col='gray')))
+     #legend("topleft",col=c("black","blue","red"),lty=c(1,1,2),legend=c("Option","Delta", "K"), cex=.8)
 }
