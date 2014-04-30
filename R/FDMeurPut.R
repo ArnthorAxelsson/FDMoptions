@@ -31,7 +31,7 @@ FDMeurPut.table <- function(K, Rf, sigma, Time=1, S.max=2*K,
      del.S <- S.max/dim.S
      call <- FDMeurCall.table(K, Rf, sigma, Time, S.max, dim.t, dim.S)
      S <- matrix(rep(seq(0,S.max,del.S), (dim.t +1)), ncol=(dim.t +1), byrow=F)
-     PV.K <- exp(-Rf*matrix(rep(seq(0,Time,del.t), (dim.S + 1)), 
+     PV.K <- exp(-Rf*matrix(rep(seq(Time,0,-del.t), (dim.S + 1)), 
                             nrow=(dim.S +1), byrow=T))
      put <- call - S + K*PV.K
      return(put)
